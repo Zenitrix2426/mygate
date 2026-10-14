@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172554">
+  <meta name="description" content="Personal GATE ECE 2027 course organiser and study tracker">
+  <title>GATE ECE 2027 | Study Hub</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">G</div>
+        <div><strong>GATE Study Hub</strong><small>ECE · 2027</small></div>
+      </div>
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav id="nav">
+        <button class="nav-item active" data-view="dashboard"><span>▦</span> Dashboard</button>
+        <button class="nav-item" data-view="courses"><span>▤</span> My courses</button>
+        <button class="nav-item" data-view="lectures"><span>▶</span> Lecture tracker</button>
+        <button class="nav-item" data-view="daily"><span>✓</span> Daily targets</button>
+        <button class="nav-item" data-view="pyq"><span>✎</span> PYQ practice</button>
+        <button class="nav-item" data-view="revision"><span>↻</span> Revision planner</button>
+        <button class="nav-item" data-view="tests"><span>▥</span> Mock tests</button>
+        <button class="nav-item" data-view="resources"><span>↗</span> YouTube library</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="local-note"><span class="status-dot"></span><div><strong>Local-only mode</strong><small>Your data stays in this browser</small></div></div>
+        <button class="nav-item" data-view="settings"><span>⚙</span> Backup & settings</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div class="breadcrumb">My workspace <span>/</span> <b id="crumb">Dashboard</b></div>
+        <div class="top-actions"><span class="date-chip" id="todayLabel"></span><button class="button button-primary" id="quickAdd">＋ Quick add</button></div>
+      </header>
+      <div class="content" id="content"></div>
+      <footer>GATE Study Hub · Personal study organiser · <span id="storageStatus">Saved locally</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <dialog id="modal"><div class="modal-head"><h2 id="modalTitle">Add item</h2><button class="icon-button" id="closeModal" aria-label="Close">×</button></div><div id="modalBody"></div></dialog>
+  <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
+    }
+  </script>
+</body>
+</html>
